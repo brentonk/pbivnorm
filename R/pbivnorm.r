@@ -1,4 +1,4 @@
-### R code of package 'pbivnorm', version 0.5-0 (2011-02-21).
+### R code of package 'pbivnorm', version 0.5-1 (2012-10-31).
 ### Author: Brenton Kenkel
 ###
 ### Based on code from 'mnormt' package by Adelchi Azzalini (University of
