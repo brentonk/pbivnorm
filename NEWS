@@ -5,6 +5,12 @@
 Maintained by Brenton Kenkel (brenton.kenkel@gmail.com).
 
 
+* Enabled recycling of `x` and `y` to conform with `rho` (previously, only
+  `rho` could be recycled)
+
+* Added an argument to disallow recycling
+
+
 pbivnorm 0.5-1 (2012-10-31)
 ---------------------------
 
