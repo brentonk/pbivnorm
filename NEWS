@@ -5,6 +5,8 @@
 Maintained by Brenton Kenkel (brenton.kenkel@gmail.com).
 
 
+pbivnorm 0.6-0 (2015-01-21)
+---------------------------
 * Enabled recycling of `x` and `y` to conform with `rho` (previously, only
   `rho` could be recycled)
 
