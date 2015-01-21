@@ -8,4 +8,3 @@ Maintainer: Brenton Kenkel <brenton.kenkel@gmail.com>
 Description: Provides a vectorized R function for calculating
     probabilities from a standard bivariate normal CDF.
 License: GPL (>= 2)
-LazyLoad: yes
