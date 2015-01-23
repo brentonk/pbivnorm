@@ -1,3 +1,6 @@
+# pbivnorm 0.6.0.9000
+
+
 # pbivnorm 0.6.0
 
 * Enabled recycling of `x` and `y` to conform with `rho` (previously, only
