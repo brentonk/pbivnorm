@@ -1,6 +1,6 @@
 Package: pbivnorm
 Title: Vectorized Bivariate Normal CDF
-Version: 0.6.0
+Version: 0.6.0.9000
 Date: 2015-01-23
 Author: Fortran code by Alan Genz.  R code by Brenton Kenkel,
     based on Adelchi Azzalini's 'mnormt' package.
