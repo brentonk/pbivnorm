@@ -13,11 +13,11 @@
 ##' @title Standard bivariate normal CDF
 ##' @param x vector of upper integration limits for the CDF.  May also be a
 ##' two-column matrix, in which case \code{y} should not be used.
-##' @param y vector of upper integration limits, must be same length as
-##' \code{x}.
-##' @param rho correlation parameter.  May be a vector of the same length as
-##' \code{x}, a scalar, or a vector of any other length that can be recycled to
-##' conform with \code{x}.
+##' @param y vector of upper integration limits.
+##' @param rho correlation parameter.
+##' @param recycle whether to automatically recycle the vectors \code{x},
+##' \code{y}, and \code{rho} to conform to whichever is longest.  If
+##' \code{FALSE}, all three must be the same length.
 ##' @return Numeric vector of probabilities.
 ##' @references
 ##' Genz, A.  (1992).  Numerical Computation of Multivariate Normal
@@ -44,10 +44,10 @@
 ##' X <- cbind(x, y)
 ##' pbivnorm(X, rho = rho)
 ##'
-##' ## rho can be a single value
+##' ## rho can be a single value, unless recycling is disallowed
 ##' rho <- runif(1)
 ##' pbivnorm(x, y, rho)
-pbivnorm <- function(x, y, rho = 0) {
+pbivnorm <- function(x, y, rho = 0, recycle = TRUE) {
     ## allow for x to be a two-column matrix
     if (length(dim(x))) {
         if (ncol(x) != 2)
@@ -61,8 +61,6 @@ pbivnorm <- function(x, y, rho = 0) {
     ## sanity checks
     if (any(abs(rho) > 1))
         stop("'rho' must be a valid correlation (-1 <= rho <= 1)")
-    if (length(x) != length(y))
-        stop("'x' and 'y' must have same length")
 
     ## turn infinite integration limits into their best finite equivalents
     x <- replace(x, x == Inf, .Machine$double.xmax)
@@ -70,9 +68,15 @@ pbivnorm <- function(x, y, rho = 0) {
     y <- replace(y, y == Inf, .Machine$double.xmax)
     y <- replace(y, y == -Inf, -.Machine$double.xmax)
 
-    ## recycle rho into correl
-    correl <- numeric(length(x))
-    correl[] <- rho
+    ## Recycle so that `x`, `y`, and `rho` are the same length (if requested)
+    lengths <- sapply(list(x, y, rho), length)
+    if (recycle) {
+        x <- rep(x, length.out = max(lengths))
+        y <- rep(y, length.out = max(lengths))
+        rho <- rep(rho, length.out = max(lengths))
+    } else if (diff(range(lengths)) > 0) {
+        stop("'x', 'y', and 'rho' must be the same length when recycling is disallowed")
+    }
 
     ## coerce arguments to proper types to be passed to fortran
     lower <- as.double(c(0, 0))
@@ -81,9 +85,9 @@ pbivnorm <- function(x, y, rho = 0) {
     upperb <- as.double(y)
     lt <- as.integer(length(x))
     prob <- double(lt)
-    correl <- as.double(correl)
+    rho <- as.double(rho)
 
-    ans <- .Fortran("PBIVNORM", prob, lower, uppera, upperb, infin, correl, lt,
+    ans <- .Fortran("PBIVNORM", prob, lower, uppera, upperb, infin, rho, lt,
                     PACKAGE="pbivnorm")[[1]]
     return(ans)
 }
