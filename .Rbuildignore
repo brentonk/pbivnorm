@@ -1,1 +1,2 @@
 ^\.gitignore$
+^cran-comments\.md$
