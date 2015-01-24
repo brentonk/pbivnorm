@@ -1,9 +1,3 @@
----
-output:
-  md_document:
-    variant: markdown_github
----
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 
@@ -42,7 +36,7 @@ microbenchmark(
     pmnorm = apply(X, 1, pmnorm, mean = mu, varcov = Sigma)
 )
 #> Unit: microseconds
-#>      expr      min       lq    mean median     uq      max neval
-#>  pbivnorm   92.165   95.625  109.82  110.2  113.5   240.37   100
-#>    pmnorm 6546.772 6841.168 7365.95 7010.8 7706.7 10202.06   100
+#>      expr      min      lq    mean  median      uq      max neval
+#>  pbivnorm   93.005  104.73  125.85  117.99  136.82   202.66   100
+#>    pmnorm 6806.887 7986.10 8630.30 8621.02 9277.97 11666.42   100
 ```
