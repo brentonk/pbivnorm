@@ -1,6 +1,8 @@
 Vectorized bivariate normal CDF
 ===============================
 
+[![Travis-CI Build Status](https://travis-ci.org/brentonk/pbivnorm.png?branch=master)](https://travis-ci.org/brentonk/pbivnorm)
+
 `pbivnorm` is an R package containing a vectorized function to compute the
 bivariate normal CDF.  It is based on
 [the `mnormt` package](http://cran.r-project.org/web/packages/mnormt/index.html)
