@@ -6,7 +6,13 @@ output:
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
 
 # pbivnorm
 
@@ -18,8 +24,7 @@ A call to `pbivnorm()` produces identical output to a corresponding set of
 calls to `mnormt::pmnorm()`, but at lower computational cost due to
 vectorization (i.e., looping in Fortran rather than in R).
 
-
-```r
+```{r}
 library("pbivnorm")
 library("mnormt")
 library("MASS")
@@ -34,15 +39,10 @@ X <- mvrnorm(100, mu = mu, Sigma = Sigma)
 ## Confirm equality of results
 all.equal(pbivnorm(X, rho = 0.5),
           apply(X, 1, pmnorm, mean = mu, varcov = Sigma))
-#> [1] TRUE
 
 ## Compare speed
 microbenchmark(
     pbivnorm = pbivnorm(X, rho = 0.5),
     pmnorm = apply(X, 1, pmnorm, mean = mu, varcov = Sigma)
 )
-#> Unit: microseconds
-#>      expr      min       lq    mean median     uq      max neval
-#>  pbivnorm   92.165   95.625  109.82  110.2  113.5   240.37   100
-#>    pmnorm 6546.772 6841.168 7365.95 7010.8 7706.7 10202.06   100
 ```
