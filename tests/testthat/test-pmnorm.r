@@ -3,6 +3,8 @@ library("mnormt")
 library("MASS")
 context("Same results as mnormt::pmnorm()")
 
+set.seed(2529)
+
 pbiv_via_pmnorm <- function(x, rho)
 {
     apply(x, 1, pmnorm, varcov = matrix(c(1, rho, rho, 1), 2, 2))

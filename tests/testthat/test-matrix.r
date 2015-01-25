@@ -2,6 +2,8 @@ library("pbivnorm")
 library("MASS")
 context("Specifying x as a matrix")
 
+set.seed(2425)
+
 nobs <- 100
 rho <- 0.5
 X <- mvrnorm(n = nobs,
