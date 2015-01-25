@@ -5,6 +5,7 @@ Date: 2015-01-23
 Author: Fortran code by Alan Genz.  R code by Brenton Kenkel,
     based on Adelchi Azzalini's 'mnormt' package.
 Maintainer: Brenton Kenkel <brenton.kenkel@gmail.com>
+Suggests: testthat, MASS, mnormt
 Description: Provides a vectorized R function for calculating
     probabilities from a standard bivariate normal CDF.
 License: GPL (>= 2)
