@@ -19,7 +19,6 @@ library("pbivnorm")
 library("mnormt")
 library("MASS")
 library("microbenchmark")
-#> Error in library("microbenchmark"): there is no package called 'microbenchmark'
 
 ## Simulate data
 set.seed(9497)
@@ -37,5 +36,8 @@ microbenchmark(
     pbivnorm = pbivnorm(X, rho = 0.5),
     pmnorm = apply(X, 1, pmnorm, mean = mu, varcov = Sigma)
 )
-#> Error in eval(expr, envir, enclos): could not find function "microbenchmark"
+#> Unit: microseconds
+#>      expr     min      lq   mean  median       uq      max neval
+#>  pbivnorm  100.09  104.74  119.2  114.36   123.49   252.41   100
+#>    pmnorm 8971.43 9247.10 9915.4 9446.80 10133.20 14139.80   100
 ```
