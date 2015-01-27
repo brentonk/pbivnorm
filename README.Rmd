@@ -11,6 +11,7 @@ knitr::opts_chunk$set(
 # pbivnorm
 
 [![Travis-CI Build Status](https://travis-ci.org/brentonk/pbivnorm.png?branch=master)](https://travis-ci.org/brentonk/pbivnorm)
+[![Coverage Status](https://coveralls.io/repos/brentonk/pbivnorm/badge.svg)](https://coveralls.io/r/brentonk/pbivnorm)
 
 `pbivnorm` is an R package containing a vectorized function to compute the cumulative distribution function of the bivariate normal distribution.  It is based on [the `mnormt` package](http://cran.r-project.org/web/packages/mnormt/index.html) by [Adelchi Azzalini](http://azzalini.stat.unipd.it/index-en.html), which uses [Fortran code](http://www.math.wsu.edu/faculty/genz/software/fort77/mvtdstpack.f) by [Alan Genz](http://www.math.wsu.edu/faculty/genz/homepage) to compute integrals of multivariate normal densities.
 

@@ -5,6 +5,7 @@
 # pbivnorm
 
 [![Travis-CI Build Status](https://travis-ci.org/brentonk/pbivnorm.png?branch=master)](https://travis-ci.org/brentonk/pbivnorm)
+[![Coverage Status](https://coveralls.io/repos/brentonk/pbivnorm/badge.svg)](https://coveralls.io/r/brentonk/pbivnorm)
 
 `pbivnorm` is an R package containing a vectorized function to compute the cumulative distribution function of the bivariate normal distribution.  It is based on [the `mnormt` package](http://cran.r-project.org/web/packages/mnormt/index.html) by [Adelchi Azzalini](http://azzalini.stat.unipd.it/index-en.html), which uses [Fortran code](http://www.math.wsu.edu/faculty/genz/software/fort77/mvtdstpack.f) by [Alan Genz](http://www.math.wsu.edu/faculty/genz/homepage) to compute integrals of multivariate normal densities.
 
@@ -18,6 +19,7 @@ library("pbivnorm")
 library("mnormt")
 library("MASS")
 library("microbenchmark")
+#> Error in library("microbenchmark"): there is no package called 'microbenchmark'
 
 ## Simulate data
 set.seed(9497)
@@ -35,8 +37,5 @@ microbenchmark(
     pbivnorm = pbivnorm(X, rho = 0.5),
     pmnorm = apply(X, 1, pmnorm, mean = mu, varcov = Sigma)
 )
-#> Unit: microseconds
-#>      expr      min      lq    mean  median      uq      max neval
-#>  pbivnorm   93.005  104.73  125.85  117.99  136.82   202.66   100
-#>    pmnorm 6806.887 7986.10 8630.30 8621.02 9277.97 11666.42   100
+#> Error in eval(expr, envir, enclos): could not find function "microbenchmark"
 ```
