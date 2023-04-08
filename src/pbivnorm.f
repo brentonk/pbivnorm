@@ -378,8 +378,8 @@
          xnhk = 0
          xnkh = 0  
       end if
-      hs = sign( one, dh - r*dk )  
-      ks = sign( one, dk - r*dh ) 
+      hs = nint(sign( one, dh - r*dk ))  
+      ks = nint(sign( one, dk - r*dh )) 
       if ( mod( nu, 2 ) .eq. 0 ) then
          bvt = atan2( sqrt(ors), -r )/tpi 
          gmph = dh/sqrt( 16*( nu + dh**2 ) )  
